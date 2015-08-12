@@ -1,0 +1,8 @@
+{
+	"array" : [ "google-maps", 
+	"cordova", 
+	"facebook-graph-api", 
+	"youtube-api", 
+	"facebook", 
+	"twitter" ]
+}

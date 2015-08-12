@@ -1,0 +1,6 @@
+{
+	"array" : [ "scikit-learn", 
+	"android-ndk", 
+	"mahout", 
+	"weka" ]
+}

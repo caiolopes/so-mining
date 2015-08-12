@@ -1,0 +1,249 @@
+extends layout
+
+block content
+	h1.
+		#{title}
+	h2
+		a(href="/").
+			Go back
+	script(type='text/javascript').
+		window.onload = function () {
+		var chartPl = new CanvasJS.Chart("chartPl",
+		{
+		title:{
+		text: !{categories[0]}
+		},
+		animationEnabled: true,
+		axisY: {
+		title: "Questions"
+		},
+		legend: {
+		verticalAlign: "bottom",
+		horizontalAlign: "center"
+		},
+		theme: "theme2",
+		data: [
+		{
+		type: "column",
+		click: onClickDo,
+		!{content[0]}
+
+		}
+		]
+		});
+		var chartDb = new CanvasJS.Chart("chartDb",
+		{
+		title:{
+		text: !{categories[1]}
+		},
+		animationEnabled: true,
+		axisY: {
+		title: "Questions"
+		},
+		legend: {
+		verticalAlign: "bottom",
+		horizontalAlign: "center"
+		},
+		theme: "theme2",
+		data: [
+		{
+		type: "column",
+		click: onClickDo,
+		!{content[1]}
+
+		}
+		]
+		});
+
+		var chartIde = new CanvasJS.Chart("chartIde",
+		{
+		title:{
+		text: !{categories[2]}
+		},
+		animationEnabled: true,
+		axisY: {
+		title: "Questions"
+		},
+		legend: {
+		verticalAlign: "bottom",
+		horizontalAlign: "center"
+		},
+		theme: "theme2",
+		data: [
+		{
+		type: "column",
+		click: onClickDo,
+		!{content[2]}
+
+		}
+		]
+		});
+
+		var chartFw = new CanvasJS.Chart("chartFw",
+		{
+		title:{
+		text: !{categories[3]}
+		},
+		animationEnabled: true,
+		axisY: {
+		title: "Questions"
+		},
+		legend: {
+		verticalAlign: "bottom",
+		horizontalAlign: "center"
+		},
+		theme: "theme2",
+		data: [
+		{
+		type: "column",
+		click: onClickDo,
+		!{content[3]}
+
+		}
+		]
+		});
+
+		var chartLb = new CanvasJS.Chart("chartLb",
+		{
+		title:{
+		text: !{categories[4]}
+		},
+		animationEnabled: true,
+		axisY: {
+		title: "Questions"
+		},
+		legend: {
+		verticalAlign: "bottom",
+		horizontalAlign: "center"
+		},
+		theme: "theme2",
+		data: [
+		{
+		type: "column",
+		click: onClickDo,
+		!{content[4]}
+
+		}
+		]
+		});
+
+		var chartDi = new CanvasJS.Chart("chartDi",
+		{
+		title:{
+		text: !{categories[5]}
+		},
+		animationEnabled: true,
+		axisY: {
+		title: "Questions"
+		},
+		legend: {
+		verticalAlign: "bottom",
+		horizontalAlign: "center"
+		},
+		theme: "theme2",
+		data: [
+		{
+		type: "column",
+		click: onClickDo,
+		!{content[5]}
+
+		}
+		]
+		});
+
+		var chartTool = new CanvasJS.Chart("chartTool",
+		{
+		title:{
+		text: !{categories[6]}
+		},
+		animationEnabled: true,
+		axisY: {
+		title: "Questions"
+		},
+		legend: {
+		verticalAlign: "bottom",
+		horizontalAlign: "center"
+		},
+		theme: "theme2",
+		data: [
+		{
+		type: "column",
+		click: onClickDo,
+		!{content[6]}
+
+		}
+		]
+		});
+
+
+		var chartApi = new CanvasJS.Chart("chartApi",
+		{
+		title:{
+		text: !{categories[7]}
+		},
+		animationEnabled: true,
+		axisY: {
+		title: "Questions"
+		},
+		legend: {
+		verticalAlign: "bottom",
+		horizontalAlign: "center"
+		},
+		theme: "theme2",
+		data: [
+		{
+		type: "column",
+		click: onClickDo,
+		!{content[7]}
+
+		}
+		]
+		});
+
+		function onClickDo(e) {
+		//alert( "name: " + e.dataPoint.label + ", value: "+ e.dataPoint.y);
+		post('/tag', { tag: e.dataPoint.label });
+		}
+
+		function post(path, params, method) {
+		method = method || "post"; // Set method to post by default if not specified.
+
+		// The rest of this code assumes you are not using a library.
+		// It can be made less wordy if you use one.
+		var form = document.createElement("form");
+		form.setAttribute("method", method);
+		form.setAttribute("action", path);
+
+		for(var key in params) {
+		if(params.hasOwnProperty(key)) {
+		var hiddenField = document.createElement("input");
+		hiddenField.setAttribute("type", "hidden");
+		hiddenField.setAttribute("name", key);
+		hiddenField.setAttribute("value", params[key]);
+
+		form.appendChild(hiddenField);
+		}
+		}
+
+		document.body.appendChild(form);
+		form.submit();
+		}
+
+		chartPl.render();
+		chartDb.render();
+		chartIde.render();
+		chartFw.render();
+		chartLb.render();
+		chartDi.render();
+		chartTool.render();
+		chartApi.render();
+		}
+	|   
+	#chartPl(style='float: left; height: 300px; width: 600px;')
+	#chartDb(style='margin-left: 50px; float: left; height: 300px; width: 600px;')
+	#chartIde(style='float: left; height: 300px; width: 600px;')
+	#chartFw(style='margin-left: 50px; float: left; height: 300px; width: 600px;')
+	#chartLb(style='float: left; height: 300px; width: 600px;')
+	#chartDi(style='margin-left: 50px; float: left; height: 300px; width: 600px;')
+	#chartTool(style='float: left; height: 300px; width: 600px;')
+	#chartApi(style='margin-left: 50px; float: left; height: 300px; width: 600px;')

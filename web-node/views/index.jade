@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h1 #{title}
+	p Welcome to #{title}
+	h3 Start searching
+	form(name="search", action="/search", method="post")
+		label Tag: 
+		input(type="text", name="tag", placeholder="Type some tag...")
+		input(type="submit", value="Submit")
